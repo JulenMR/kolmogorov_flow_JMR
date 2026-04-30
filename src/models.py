@@ -10,7 +10,7 @@ class U_net(nn.Module):
     self.encoder1 = self.conv_block(1, width)
     self.encoder2 = self.conv_block(width, width*2)
 
-    self.pool = nn.MaxPool2d(2) # pooling reduces the image size to half
+    self.pool = nn.MaxPool2d(2) 
 
     self.bottleneck = self.conv_block(width*2, width*4)
 
@@ -31,7 +31,7 @@ class U_net(nn.Module):
     )
 
 
-  def forward(self, x): # x: (B, 1, 160, 160)
+  def forward(self, x): # (B, 1, 160, 160)
     # Encoding
     enc1 = self.encoder1(x) # (B, 32, 160, 160)
     pool1 = self.pool(enc1) # (B, 32, 80, 80)
@@ -111,18 +111,13 @@ class FNO(nn.Module):
     def forward(self, x):
 
         x = x.squeeze(1) 
-
-        # 1. Lifting: (B, 64, 64) -> (B, 64, 64, 1) -> (B, 64, 64, Width)
         x = self.p(x.unsqueeze(-1)) 
         
-        # 2. Permute: (B, 64, 64, Width) -> (B, Width, 64, 64)
         x = x.permute(0, 3, 1, 2)
 
-        # Bloques de Fourier
         for s_conv, w_conv in zip(self.spectral_convs, self.skip_convs):
             x = F.gelu(s_conv(x) + w_conv(x))
 
-        # Final projection
         x = x.permute(0, 2, 3, 1) # (B, 64, 64, Width)
         x = self.fc(F.gelu(self.q(x))) # (B, 64, 64, 1)
 
