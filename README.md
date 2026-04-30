@@ -15,7 +15,7 @@ source venv/bin/activate
 ```
 3. Install dependencies:
 ```bash
-  pip install numpy matplotlib torch wandb json pandas h5py huggingface_hub
+pip install numpy matplotlib torch wandb json pandas h5py huggingface_hub
 ```
 
 ## 2. Downloading the dataset
