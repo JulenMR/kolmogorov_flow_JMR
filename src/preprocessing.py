@@ -1,17 +1,22 @@
 import h5py
 import numpy as np
 import json
-import os
 from huggingface_hub import hf_hub_download
+import os
 
 def preprocessing(repo_id, dataset_filename, train_split_percentage = 0.8):
-    # print("Downloading dataset")
-    # dataset_path = hf_hub_download(
-    #     repo_id=repo_id, 
-    #     filename=dataset_filename, 
-    #     repo_type="dataset", 
-    #     local_dir="./data"
-    # )
+    print("Downloading dataset")
+    data_dir = "./data"
+    if not os.path.exists(data_dir):
+        os.makedirs(data_dir)
+
+    print(f"Directory {data_dir} created.")
+    dataset_path = hf_hub_download(
+        repo_id=repo_id, 
+        filename=dataset_filename, 
+        repo_type="dataset", 
+        local_dir=data_dir
+    )
 
     num_sims = 256
     train_split = int(train_split_percentage * num_sims)
