@@ -9,11 +9,10 @@ git clone https://github.com/JulenMR/kolmogorov_flow_JMR.git
 cd kolmogorov_flow_JMR
 ``` 
 2. Create virtual environment
-
-    python -m venv venv
-
-  source venv/bin/activate
-
+```bash
+python -m venv venv
+source venv/bin/activate
+```
 3. Install dependencies:
 ```bash
   pip install numpy matplotlib torch wandb json pandas h5py huggingface_hub
