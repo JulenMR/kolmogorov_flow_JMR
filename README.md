@@ -3,18 +3,18 @@
 
 ## 1. Instalation and dependencies
 
-* 1. Clone the repository:
+1. Clone the repository:
 ```bash
 git clone https://github.com/JulenMR/kolmogorov_flow_JMR.git
 cd kolmogorov_flow_JMR
 ``` 
-* 2. Create virtual environment
+2. Create virtual environment
 
     python -m venv venv
 
   source venv/bin/activate
 
-* 3. Install dependencies:
+3. Install dependencies:
 ```bash
   pip install numpy matplotlib torch wandb json pandas h5py huggingface_hub
 ```
