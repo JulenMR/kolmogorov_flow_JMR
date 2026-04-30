@@ -7,7 +7,7 @@ import json
 from torch.utils.data import  DataLoader
 from dataset import KolmogorovDataset
 
-
+# Hyperparameter space for the sweep
 sweep_config = {
     'method': 'bayes',
     'metric': {
