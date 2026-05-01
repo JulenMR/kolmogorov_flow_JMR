@@ -125,7 +125,10 @@ def train():
             "g_max": g_max,
             "dataset_path": dataset_path
         }
-        checkpoint_name = f"checkpoint_{config.architecture}_{run.id}.pth"
+        if config.architecture == "U-Net":
+            checkpoint_name = f"cp_{config.architecture}_w{config.width}_lr{config.learning_rate}.pth"
+        else:
+            checkpoint_name = f"cp_{config.architecture}_w{config.width}_m{config.modes}_lr{config.learning_rate}.pth"
         
         checkpoint = {
             'model_state_dict': model.state_dict(),
