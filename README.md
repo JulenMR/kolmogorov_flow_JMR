@@ -27,7 +27,7 @@ python scr/preprocessing.py
 
 ## 3. Reproduce results
 
- Once the dataset is downloaded, you can execute the `reproduce_results.ipynb` notebook. This notebook performs a comprehensive evaluation through the following stages:
+ Once the dataset is downloaded, you can execute the `scr/reproduce_results.ipynb` notebook. This notebook performs a comprehensive evaluation through the following stages:
 
 *   Model Selection: Compares the performance across all trained architectures to identify the optimal hyperparameter configurations for both U-Net and FNO.
 *   Training Dynamics: Visualizes and benchmarks the learning curves and validation NRMSE metrics.
